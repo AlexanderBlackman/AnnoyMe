@@ -18,6 +18,8 @@ using CommunityToolkit.WinUI.Helpers;
 using Windows.Graphics.Imaging;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Media.Imaging;
+using CommunityToolkit.WinUI;
+
 
 
 // To learn more about WinUI, the WinUI project structure,
@@ -59,6 +61,8 @@ namespace AnnoyMe
             CurrentFrameImage.Visibility = Visibility.Visible;
             CurrentFrameImage.Source = softwareBitmapSource;
             ShameCamera.CameraHelper.FrameArrived += CameraHelper_FrameArrived;
+
+
         }
 
         private async void CameraHelper_FrameArrived(object? sender, FrameEventArgs e)
@@ -71,9 +75,15 @@ namespace AnnoyMe
             {
                 if (softwareBitmap.BitmapPixelFormat != BitmapPixelFormat.Bgra8 || softwareBitmap.BitmapAlphaMode == BitmapAlphaMode.Straight)
                     targetSoftwareBitmap = SoftwareBitmap.Convert(softwareBitmap, BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);
+                var dispatcher = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
+
+                await DispatcherQueue.EnqueueAsync(() =>
+                {
+                    softwareBitmapSource.SetBitmapAsync(targetSoftwareBitmap);
+                });
 
 
-                await softwareBitmapSource.SetBitmapAsync(targetSoftwareBitmap);
+
             }
         }
 

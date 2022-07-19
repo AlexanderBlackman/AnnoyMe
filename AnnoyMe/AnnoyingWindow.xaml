@@ -14,7 +14,7 @@
             HorizontalAlignment="Stretch" 
             VerticalAlignment="Center">
             <!--TODO Make the camera only visible if set in settings.-->
-            <tk:CameraPreview x:Name="ShameCamera"  Width="500" />
+            <tk:CameraPreview x:Name="ShameCamera"   />
             <Image x:Name="CurrentFrameImage" Width="500" Visibility="Collapsed"  />
             <TextBlock x:Name="buttonTest"/>
             <TextBlock 
