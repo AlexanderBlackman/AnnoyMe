@@ -1,0 +1,36 @@
+﻿<winex:WindowEx
+    x:Class="AnnoyMe.AnnoyingWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AnnoyMe"
+    xmlns:tk="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:winex="using:WinUIEx"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+        <StackPanel 
+            HorizontalAlignment="Stretch" 
+            VerticalAlignment="Center">
+            <!--TODO Make the camera only visible if set in settings.-->
+            <tk:CameraPreview x:Name="ShameCamera"  Width="500" />
+            <Image x:Name="CurrentFrameImage" Width="500" Visibility="Collapsed"  />
+            <TextBlock x:Name="buttonTest"/>
+            <TextBlock 
+                Text="What purpose did you click on this for?" 
+                FontSize="40" 
+                HorizontalAlignment="Center" Margin="0 0 0 10"/>
+            <TextBox Margin="100 0" FontSize="36" AcceptsReturn="True"
+                     TextWrapping="Wrap"/>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock Text="Is this the most productive use of your time?" Margin="10"/>
+                <Button x:Name="yesButton" Content="Yes" AccessKey="Y" Click="project1Button_Click"/>
+                <Button x:Name="noButton" Content="No" AccessKey="N" Click="project2Button_Click"/>
+                <Button x:Name="taskCompletedButton" Content="Move to the next task" Click="taskCompletedButton_Click"/>
+            </StackPanel>
+
+
+        </StackPanel>
+    </Grid>
+</winex:WindowEx>

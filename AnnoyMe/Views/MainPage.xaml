@@ -1,0 +1,101 @@
+﻿<Page
+    x:Class="AnnoyMe.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AnnoyMe.Views"
+    xmlns:tk="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <!--<Viewbox 
+                 
+                 Stretch="Uniform"
+                 StretchDirection="Both">-->
+
+        <Border Margin="20" >
+            <StackPanel>
+                <tk:Expander x:Name="SelectProjectExpander"
+                                 Header="Select Project"
+                                 HorizontalAlignment="Stretch"
+                                 IsExpanded="True"
+                                 ExpandDirection="Down">
+                    <TextBlock Text="laleoala.ueo,eou" FontSize="40"/>
+                </tk:Expander>
+
+                <tk:Expander x:Name="HowLongExpander"
+                                 Header="How long do you want to block for?"
+                                 HorizontalAlignment="Stretch"
+                                 IsExpanded="False"
+                                 ExpandDirection="Down"/>
+                <tk:Expander x:Name="LogSettingsExpander"
+                                 Header="How shall we log?"
+                                 HorizontalAlignment="Stretch"
+                                 IsExpanded="False"
+                                 ExpandDirection="Down">
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Content="Log active window"/>
+                        <CheckBox Content="Log click messages"/>
+                        <CheckBox Content="Take screenshots"/>
+                    </StackPanel>
+                </tk:Expander>
+                <tk:Expander x:Name="BlockSettingsExpander"
+                                 Header="How strict do you want to be?"
+                                 HorizontalAlignment="Stretch"
+                                 IsExpanded="False"
+                                 ExpandDirection="Down">
+                    <StackPanel >
+                        <RadioButtons MaxColumns="3">
+                            <RadioButtons.Resources>
+                                <Style TargetType="RadioButton" BasedOn="{StaticResource DefaultToggleButtonStyle}">
+                                    <Setter Property="MinWidth" Value="50"/>
+                                </Style>
+                            </RadioButtons.Resources>
+                            <RadioButton Tag="Hardcore">
+                                <ToolTipService.ToolTip>
+                                    <StackPanel >
+                                        <TextBlock Text="The popup takes longer to close every time"/>
+                                        <TextBlock>
+                                            <Run FontWeight="Bold" Text="WARNING: "/>
+                                            <Run Text="Clicked on program will close if"/>
+                                        </TextBlock>
+                                        <TextBlock Text="popup is prematurely closed"/>
+                                    </StackPanel>
+                                </ToolTipService.ToolTip>
+                                <RadioButton.Content>
+                                    <StackPanel>
+                                        <TextBlock Text="🐯" FontSize="50"/>
+                                        <TextBlock Text="Hardcore" HorizontalAlignment="Center" />
+                                    </StackPanel>
+                                </RadioButton.Content>
+                            </RadioButton>
+                            <RadioButton Tag="Normal"
+                                         ToolTipService.ToolTip="The popup can be closed after 3 minutes">
+                                <RadioButton.Content>
+                                    <StackPanel>
+                                        <TextBlock Text="🐶" FontSize="50"/>
+                                        <TextBlock Text="Normal" HorizontalAlignment="Center" />
+                                    </StackPanel>
+                                </RadioButton.Content>
+                            </RadioButton>
+                            <RadioButton Tag="Easy"
+                                         ToolTipService.ToolTip="No wait, just close the popup">
+                                <RadioButton.Content>
+                                    <StackPanel>
+                                        <TextBlock Text="🐔" FontSize="50"/>
+                                        <TextBlock Text="Easy" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </RadioButton.Content>
+                            </RadioButton>
+                        </RadioButtons>
+                    </StackPanel>
+                </tk:Expander>
+                <Button Content="Launch AnnoyingWindow" Click="LaunchAnnoyingWindow"/>
+            </StackPanel>
+
+        </Border>
+        <!--</Viewbox>-->
+    </Grid>
+</Page>
